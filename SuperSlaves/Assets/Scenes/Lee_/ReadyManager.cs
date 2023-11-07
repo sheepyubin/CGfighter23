@@ -173,6 +173,24 @@ public class ReadyManager : MonoBehaviour
                     }
                     break;
                 case 3:
+                    time += Time.deltaTime;
+                    if (time > changeDelay)
+                    {
+                        //Top
+                        {
+                            tempObj[10] = Instantiate(tempBox, new Vector2(0,gapY - selectPos), Quaternion.identity);
+                            tempObj[0].transform.DOMoveY(-selectPos, moveDelay * 50);
+                            tempArr++;
+                        }
+                        //Bottom
+                        {
+                            tempObj[11] = Instantiate(tempBox, new Vector2(0, -gapY - selectPos), Quaternion.identity);
+                            tempObj[11].transform.DOMoveY(-selectPos, moveDelay * 50);
+                            tempArr++;
+                        }
+                        checkSpawn++;
+                        time = 0.0f;
+                    }
                     break;
                 case 4:
                     break;
