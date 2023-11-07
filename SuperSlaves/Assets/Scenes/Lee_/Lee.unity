@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drowGizmo: 1
-  redBox: {fileID: 0}
+  tempBox: {fileID: 6376527965966574912, guid: b31af48be44b0f34794d33706b7116e4, type: 3}
   character:
   - {fileID: 3860684817539161064, guid: 9ddf875ff7bb6154796213cbf2ddb9ed, type: 3}
   - {fileID: 4606447096192136844, guid: 76dfc5d1bd64b0740afacc17c30990d1, type: 3}
@@ -174,7 +174,9 @@ MonoBehaviour:
   gapX: 1.29
   gapY: 0.65
   boxSize: {x: 1.2, y: 1.2}
-  delay: 0
+  moveDelay: 0.45
+  changeDelay: 0.05
+  colorDelay: 0
 --- !u!4 &119489514
 Transform:
   m_ObjectHideFlags: 0
