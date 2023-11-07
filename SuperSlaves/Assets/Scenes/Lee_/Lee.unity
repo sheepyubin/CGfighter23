@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda813323cde26d479132453c55c7901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drowGizmo: 1
+  drowGizmo: 0
   tempBox: {fileID: 6376527965966574912, guid: b31af48be44b0f34794d33706b7116e4, type: 3}
   character:
   - {fileID: 3860684817539161064, guid: 9ddf875ff7bb6154796213cbf2ddb9ed, type: 3}
@@ -176,7 +176,7 @@ MonoBehaviour:
   boxSize: {x: 1.2, y: 1.2}
   moveDelay: 0.12
   changeDelay: 0.13
-  colorDelay: 0
+  colorDelay: 0.8
 --- !u!4 &119489514
 Transform:
   m_ObjectHideFlags: 0

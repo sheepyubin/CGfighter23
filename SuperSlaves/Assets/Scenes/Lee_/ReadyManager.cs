@@ -87,7 +87,7 @@ public class ReadyManager : MonoBehaviour
     short checkSpawn = 0;
     bool spawn = false;
     int tempArr = 0;
-
+    Renderer rend;
     void Update()
     {
         if (!spawn)
@@ -179,7 +179,7 @@ public class ReadyManager : MonoBehaviour
                         //Top
                         {
                             tempObj[10] = Instantiate(tempBox, new Vector2(0,gapY - selectPos), Quaternion.identity);
-                            tempObj[0].transform.DOMoveY(-selectPos, moveDelay * 50);
+                            tempObj[10].transform.DOMoveY(-selectPos, moveDelay * 50);
                             tempArr++;
                         }
                         //Bottom
@@ -193,14 +193,86 @@ public class ReadyManager : MonoBehaviour
                     }
                     break;
                 case 4:
+                    for (int i = 0; i < characterPos.Length; i++)
+                    {
+                        if (i < 5)
+                        {
+                            if (i != 2)
+                                Instantiate(character[0], characterPos[i], Quaternion.identity);
+                        }
+                        else
+                        {
+                            if (i != 7)
+                                Instantiate(character[0], characterPos[i], Quaternion.identity);
+                        }
+                    }
+                    tempObj[0].GetComponent<SpriteRenderer>().DOColor(UnityEngine.Color.red, colorDelay);
+                    tempObj[1].GetComponent<SpriteRenderer>().DOColor(UnityEngine.Color.red, colorDelay);
+                    tempObj[10].GetComponent<SpriteRenderer>().DOColor(UnityEngine.Color.red, colorDelay);
+                    tempObj[11].GetComponent<SpriteRenderer>().DOColor(UnityEngine.Color.red, colorDelay);
+                    checkSpawn++;
+                    time = 0.0f;
                     break;
                 case 5:
-                    break;
+                    time += Time.deltaTime;
+                    if (time > changeDelay * 0.8f)
+                    {
+                        tempObj[2].GetComponent<SpriteRenderer>().DOColor(UnityEngine.Color.red, colorDelay);
+                        tempObj[3].GetComponent<SpriteRenderer>().DOColor(UnityEngine.Color.red, colorDelay);
+                        tempObj[4].GetComponent<SpriteRenderer>().DOColor(UnityEngine.Color.red, colorDelay);
+                        tempObj[5].GetComponent<SpriteRenderer>().DOColor(UnityEngine.Color.red, colorDelay);
+                        checkSpawn++;
+                        time = 0.0f;
+                    }
+                        break;
                 case 6:
+                    time += Time.deltaTime;
+                    if (time > changeDelay * 0.8f)
+                    {
+                        tempObj[6].GetComponent<SpriteRenderer>().DOColor(UnityEngine.Color.red, colorDelay);
+                        tempObj[7].GetComponent<SpriteRenderer>().DOColor(UnityEngine.Color.red, colorDelay);
+                        tempObj[8].GetComponent<SpriteRenderer>().DOColor(UnityEngine.Color.red, colorDelay);
+                        tempObj[9].GetComponent<SpriteRenderer>().DOColor(UnityEngine.Color.red, colorDelay);
+                        checkSpawn++;
+                        time = 0.0f;
+                    }
                     break;
                 case 7:
+                    time += Time.deltaTime;
+                    if (time > changeDelay * 1.3f)
+                    {
+                        tempObj[0].GetComponent<SpriteRenderer>().DOColor(new UnityEngine.Color(0,0,0,0), colorDelay);
+                        tempObj[1].GetComponent<SpriteRenderer>().DOColor(new UnityEngine.Color(0, 0, 0, 0), colorDelay);
+                        tempObj[10].GetComponent<SpriteRenderer>().DOColor(new UnityEngine.Color(0, 0, 0, 0), colorDelay);
+                        tempObj[11].GetComponent<SpriteRenderer>().DOColor(new UnityEngine.Color(0, 0, 0, 0), colorDelay);
+                        checkSpawn++;
+                        time = 0.0f;
+                    }
                     break;
-
+                case 8:
+                    time += Time.deltaTime;
+                    if (time > changeDelay * 1.3f)
+                    {
+                        tempObj[2].GetComponent<SpriteRenderer>().DOColor(new UnityEngine.Color(0, 0, 0, 0), colorDelay);
+                        tempObj[3].GetComponent<SpriteRenderer>().DOColor(new UnityEngine.Color(0, 0, 0, 0), colorDelay);
+                        tempObj[4].GetComponent<SpriteRenderer>().DOColor(new UnityEngine.Color(0, 0, 0, 0), colorDelay);
+                        tempObj[5].GetComponent<SpriteRenderer>().DOColor(new UnityEngine.Color(0, 0, 0, 0), colorDelay);
+                        checkSpawn++;
+                        time = 0.0f;
+                    }
+                    break;
+                case 9:
+                    time += Time.deltaTime;
+                    if (time > changeDelay * 1.3f)
+                    {
+                        tempObj[6].GetComponent<SpriteRenderer>().DOColor(new UnityEngine.Color(0, 0, 0, 0), colorDelay);
+                        tempObj[7].GetComponent<SpriteRenderer>().DOColor(new UnityEngine.Color(0, 0, 0, 0), colorDelay);
+                        tempObj[8].GetComponent<SpriteRenderer>().DOColor(new UnityEngine.Color(0, 0, 0, 0), colorDelay);
+                        tempObj[9].GetComponent<SpriteRenderer>().DOColor(new UnityEngine.Color(0, 0, 0, 0), colorDelay);
+                        checkSpawn++;
+                        time = 0.0f;
+                    }
+                    break;  
             }
         }
     }
