@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 119489514}
   - component: {fileID: 119489513}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ReadyManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,16 +152,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda813323cde26d479132453c55c7901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPos:
-  - {x: -7.5, y: -0.9}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
+  drowGizmo: 1
+  redBox: {fileID: 0}
   character:
   - {fileID: 3860684817539161064, guid: 9ddf875ff7bb6154796213cbf2ddb9ed, type: 3}
   - {fileID: 4606447096192136844, guid: 76dfc5d1bd64b0740afacc17c30990d1, type: 3}
   - {fileID: 6391933231053257472, guid: f7cbd8a10ce4daa4081ccc29ab14f16c, type: 3}
   - {fileID: 1426719268549717564, guid: a148965f9fe909141a1f7706b625ef89, type: 3}
+  characterPos:
+  - {x: -2.58, y: -1.9699999, z: 0}
+  - {x: -1.29, y: -1.9699999, z: 0}
+  - {x: 0, y: -1.6199999, z: 0}
+  - {x: 1.29, y: -1.9699999, z: 0}
+  - {x: 2.58, y: -1.9699999, z: 0}
+  - {x: -2.58, y: -3.27, z: 0}
+  - {x: -1.29, y: -3.27, z: 0}
+  - {x: 0, y: -3.62, z: 0}
+  - {x: 1.29, y: -3.27, z: 0}
+  - {x: 2.58, y: -3.27, z: 0}
+  selectPos: 2.62
+  gapX: 1.29
+  gapY: 0.65
+  boxSize: {x: 1.2, y: 1.2}
+  delay: 0
 --- !u!4 &119489514
 Transform:
   m_ObjectHideFlags: 0
