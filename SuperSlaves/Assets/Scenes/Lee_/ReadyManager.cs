@@ -149,34 +149,34 @@ public class ReadyManager : MonoBehaviour
                         time = 0.0f;
                     }
                     break;
-                case 2:
-                    time += Time.deltaTime;
-                    if (time > changeDelay * 0.9f)
-                    {
-                        //Top
+                    case 2:
+                        time += Time.deltaTime;
+                        if (time > changeDelay * 0.9f)
                         {
-                            tempObj[6] = Instantiate(tempBox, new Vector3(characterPos[1].x, gapY - selectPos), Quaternion.identity);
-                            tempObj[6].transform.DOMoveX(characterPos[0].x, moveDelay);
-                            tempArr++;
+                            //Top
+                            {
+                                tempObj[6] = Instantiate(tempBox, new Vector3(characterPos[1].x, gapY - selectPos), Quaternion.identity);
+                                tempObj[6].transform.DOMoveX(characterPos[0].x, moveDelay);
+                                tempArr++;
 
-                            tempObj[7] = Instantiate(tempBox, new Vector3(characterPos[3].x, gapY - selectPos), Quaternion.identity);
-                            tempObj[7].transform.DOMoveX(characterPos[4].x, moveDelay);
-                            tempArr++;
-                        }
-                        //Bottom
-                        {
-                            tempObj[8] = Instantiate(tempBox, new Vector3(characterPos[6].x, -gapY - selectPos), Quaternion.identity);
-                            tempObj[8].transform.DOMoveX(characterPos[5].x, moveDelay);
-                            tempArr++;
+                                tempObj[7] = Instantiate(tempBox, new Vector3(characterPos[3].x, gapY - selectPos), Quaternion.identity);
+                                tempObj[7].transform.DOMoveX(characterPos[4].x, moveDelay);
+                                tempArr++;
+                            }
+                            //Bottom
+                            {
+                                tempObj[8] = Instantiate(tempBox, new Vector3(characterPos[6].x, -gapY - selectPos), Quaternion.identity);
+                                tempObj[8].transform.DOMoveX(characterPos[5].x, moveDelay);
+                                tempArr++;
 
-                            tempObj[9] = Instantiate(tempBox, new Vector3(characterPos[8].x, -gapY - selectPos), Quaternion.identity);
-                            tempObj[9].transform.DOMoveX(characterPos[9].x, moveDelay);
-                            tempArr++;
+                                tempObj[9] = Instantiate(tempBox, new Vector3(characterPos[8].x, -gapY - selectPos), Quaternion.identity);
+                                tempObj[9].transform.DOMoveX(characterPos[9].x, moveDelay);
+                                tempArr++;
+                            }
+                            checkSpawn++;
+                            time = 0.0f;
                         }
-                        checkSpawn++;
-                        time = 0.0f;
-                    }
-                    break;
+                        break;
                 case 3:
                     time += Time.deltaTime;
                     if (time > changeDelay)
