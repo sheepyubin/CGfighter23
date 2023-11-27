@@ -14,6 +14,7 @@ public class ReadyManager : MonoBehaviour
     [SerializeField] GameObject tempBox;                //애니메이션용 박스
     [SerializeField] GameObject randomBox;              //랜덤박스
     [SerializeField] GameObject question;               //물음표
+
     public GameObject[] character;                      //캐릭터 종류
     public Vector3[] characterPos = new Vector3[10];    //캐릭터 선택창 포지션
     public float selectPos;                             //선택창 위치
