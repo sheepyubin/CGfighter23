@@ -1,25 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 [CreateAssetMenu(fileName = "New Move", menuName = "New Move")]
 public class Movement : ScriptableObject
 {
-    [SerializeField] private List<KeyCode> m_moveKeyCodes;
-    
-    [field: SerializeField] public int ComboPriorty { get; private set; }
-    [field: SerializeField] public Moves MoveType{ get; set; }
+    [SerializeField] private List<Keys> m_moveKeyCodes;
 
-    public bool isMoveAvailable(List<KeyCode> pPlayerKeyCodes)
+    [field: SerializeField] public int ComboPriorty { get; private set; }
+    [field: SerializeField] public Moves MoveType { get; set; }
+
+    public bool isMoveAvailable(List<Keys> pPlayerKeyCodes)
     {
         int comboIndex = 0;
 
-        for(int i = 0; i < pPlayerKeyCodes.Count; i++)
+        for (int i = 0; i < m_moveKeyCodes.Count && i < pPlayerKeyCodes.Count; i++)
         {
+            if (pPlayerKeyCodes.Count <= i)
+            {
+                Debug.LogError("pPlayerKeyCodes.Count is low");
+                break;
+            }
+            else if (m_moveKeyCodes.Count <= i)
+            {
+                Debug.LogError("m_moveKeyCodes.Count is low");
+                break;
+            }
             if (pPlayerKeyCodes[i] == m_moveKeyCodes[i])
             {
                 comboIndex++;
-                if(comboIndex == m_moveKeyCodes.Count)
+                if (comboIndex == m_moveKeyCodes.Count)
                 {
                     return true;
                 }
@@ -31,11 +44,6 @@ public class Movement : ScriptableObject
         }
         return false;
     }
-
-    public int GetMoveComboCount()
-    {
-        return m_moveKeyCodes.Count;
-    }
 }
 
 public enum Moves
@@ -44,4 +52,15 @@ public enum Moves
     Punch,
     Kick,
     Skill,
+}
+
+public enum Keys
+{
+    None,
+    Up,
+    Down,
+    Left,
+    Right,
+    Punch,
+    Kick,
 }

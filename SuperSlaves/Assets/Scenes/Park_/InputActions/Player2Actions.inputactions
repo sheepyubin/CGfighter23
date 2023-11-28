@@ -1,5 +1,5 @@
 {
-    "name": "Player1Actions",
+    "name": "Player2Actions",
     "maps": [
         {
             "name": "PlayerAction",
@@ -48,7 +48,7 @@
                 {
                     "name": "up",
                     "id": "b8a3c1ae-a5de-4c1d-ab80-38274ccf64f0",
-                    "path": "<Keyboard>/w",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
@@ -59,7 +59,7 @@
                 {
                     "name": "down",
                     "id": "1d22be08-de21-41f1-a659-9901dba1eee3",
-                    "path": "<Keyboard>/s",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
@@ -70,7 +70,7 @@
                 {
                     "name": "left",
                     "id": "bbd1753b-da82-4589-9c60-9d298e2ce2ea",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
@@ -81,7 +81,7 @@
                 {
                     "name": "right",
                     "id": "a137e3f9-4162-4a3e-be1a-2a481267cd46",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
@@ -147,7 +147,7 @@
                 {
                     "name": "",
                     "id": "c094c47e-b984-406b-a77f-738ed527a5b7",
-                    "path": "<Keyboard>/q",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
@@ -158,7 +158,7 @@
                 {
                     "name": "",
                     "id": "f35be110-f6ff-4948-a965-25efbe54ebfe",
-                    "path": "<Keyboard>/e",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",

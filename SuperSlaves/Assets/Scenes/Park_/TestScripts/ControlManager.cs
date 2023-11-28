@@ -1,21 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 using TMPro;
 using System;
+using Unity.VisualScripting;
 
 public class ControlManager : MonoBehaviour
 {
     [SerializeField] private float m_comboResetTime = 0.5f;
-    [SerializeField] private List<KeyCode> m_pressedKeys;
+    [SerializeField] private List<Keys> m_pressedKeys;
     [SerializeField] private TextMeshProUGUI m_textForTest;
+    [SerializeField] private String m_playerName;
 
     private MovementManager m_movementManager;
 
     private void Awake()
     {
-        if(m_movementManager == null)
+        if (m_movementManager == null)
         {
             m_movementManager = FindObjectOfType<MovementManager>();
         }
@@ -23,27 +26,58 @@ public class ControlManager : MonoBehaviour
 
     private void Update()
     {
-        DetectPressedKey();
+        //DetectPressedKey();
         PrintControls();
     }
 
-    public void DetectPressedKey()
+    private void OnMove(InputValue value)
     {
-        foreach(KeyCode keyCode in Enum.GetValues(typeof(KeyCode)))
+        Vector2 inputVec = value.Get<Vector2>();
+        //Up
+        if(inputVec.y > 0)
         {
-            if (Input.GetKeyDown(keyCode))
-            {
-                m_pressedKeys.Add(keyCode);
-
-                if (!m_movementManager.CanMove(m_pressedKeys))
-                {
-                    //이건 코루틴 다 찾아서 하는 게 나을 듯?!
-                    StopAllCoroutines();
-                }
-
-                StartCoroutine(ResetComboTimer());
-            }
+            m_pressedKeys.Add(Keys.Up);
         }
+        //Down
+        else if (inputVec.y < 0)
+        {
+            m_pressedKeys.Add(Keys.Down);
+        }
+        //Left
+        else if(inputVec.x < 0)
+        {
+            m_pressedKeys.Add(Keys.Left);
+        }
+        //Right
+        else if(inputVec.x > 0)
+        {
+            m_pressedKeys.Add(Keys.Right);
+        }
+
+        SetComboTimer();
+    }
+
+    private void OnPunch()
+    {
+        m_pressedKeys.Add(Keys.Punch);
+        SetComboTimer();
+    }
+
+    private void OnKick()
+    {
+        m_pressedKeys.Add(Keys.Kick);
+        SetComboTimer();
+    }
+
+    private void SetComboTimer()
+    {
+        if (!m_movementManager.CanMove(m_pressedKeys))
+        {
+            //이건 코루틴 다 찾아서 하는 게 나을 듯?!
+            StopAllCoroutines();
+        }
+
+        StartCoroutine(ResetComboTimer());
     }
 
     public void ResetCombo()
@@ -61,9 +95,9 @@ public class ControlManager : MonoBehaviour
 
     public void PrintControls()
     {
-        m_textForTest.text = "Buffer : ";
+        m_textForTest.text = $"{m_playerName} Buffer : ";
 
-        foreach(KeyCode keyCode in m_pressedKeys)
+        foreach (Keys keyCode in m_pressedKeys)
         {
             m_textForTest.text += $"{keyCode} ";
         }

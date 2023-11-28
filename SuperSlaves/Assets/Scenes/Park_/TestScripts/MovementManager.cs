@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,12 +15,17 @@ public class MovementManager : MonoBehaviour
         m_player1 = FindObjectOfType<PlayerController>();
         m_controlManager = FindObjectOfType<ControlManager>();
 
-        m_availableMoves.Sort();
+        m_availableMoves.Sort(Compare);
     }
 
-    public bool CanMove(List<KeyCode> pKeyCodes)
+    private int Compare(Movement move1, Movement move2)
     {
-        foreach(var movement in m_availableMoves)
+        return Comparer<int>.Default.Compare(move2.ComboPriorty, move1.ComboPriorty);
+    }
+
+    public bool CanMove(List<Keys> pKeyCodes)
+    {
+        foreach (var movement in m_availableMoves)
         {
             if (movement.isMoveAvailable(pKeyCodes))
             {
@@ -29,7 +35,7 @@ public class MovementManager : MonoBehaviour
         return false;
     }
 
-    public void PlayMove(List<KeyCode> pKeyCodes)
+    public void PlayMove(List<Keys> pKeyCodes)
     {
         foreach (var movement in m_availableMoves)
         {
