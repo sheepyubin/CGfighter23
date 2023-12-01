@@ -14,6 +14,8 @@ public class ControlManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_textForTest;
     [SerializeField] private String m_playerName;
 
+    [SerializeField] private JoyStickController m_joyStickController;
+
     private MovementManager m_movementManager;
 
     private void Awake()
@@ -27,12 +29,16 @@ public class ControlManager : MonoBehaviour
     private void Update()
     {
         //DetectPressedKey();
+        //m_joyStickController.JoystickUpdate();
         PrintControls();
     }
 
     private void OnMove(InputValue value)
     {
         Vector2 inputVec = value.Get<Vector2>();
+
+        //m_textStick.text = $"({inputVec.x},{inputVec.y})";  //근데 그냥 여기 들어오는 값부터가 잘못 들어오는데요??
+
         //Up
         if(inputVec.y > 0)
         {

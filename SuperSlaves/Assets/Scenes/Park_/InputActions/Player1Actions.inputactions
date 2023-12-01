@@ -9,7 +9,7 @@
                     "name": "Move",
                     "type": "Value",
                     "id": "40426dee-10bb-4bcd-8906-686945561306",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Stick",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -91,7 +91,7 @@
                 },
                 {
                     "name": "2D Vector",
-                    "id": "c08b3645-fdf5-4ba9-a2d7-623ae584df5d",
+                    "id": "0460b32e-d609-47bb-8638-da52f9dbb1cc",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -102,44 +102,44 @@
                 },
                 {
                     "name": "up",
-                    "id": "57e45a83-ae1e-491a-b261-85e24ee288da",
-                    "path": "<Joystick>/stick/up",
+                    "id": "cc0385a3-af59-424e-82d5-d5d23d4fef1a",
+                    "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Console",
+                    "groups": "Controllers",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "b8e449d1-9db2-4b2b-8a8d-76bd4bd2a654",
-                    "path": "<Joystick>/stick/up",
+                    "id": "23dcddaf-90d5-416e-bae0-2669a7705eb8",
+                    "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Console",
+                    "groups": "Controllers",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "806d45da-1e40-466a-8b63-88774675dd3d",
-                    "path": "<Joystick>/stick/left",
+                    "id": "5ae4e5aa-58b5-44fe-b814-920820dbe1b9",
+                    "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Console",
+                    "groups": "Controllers",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "a306a967-3183-4313-8b7d-8565be6076a6",
-                    "path": "<Joystick>/stick/right",
+                    "id": "e1564061-76a9-4623-af1b-785afc232b42",
+                    "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Console",
+                    "groups": "Controllers",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -157,11 +157,33 @@
                 },
                 {
                     "name": "",
+                    "id": "7d98c499-df9a-4108-a5d3-416dfafbe558",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controllers",
+                    "action": "Punch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f35be110-f6ff-4948-a965-25efbe54ebfe",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
+                    "action": "Kick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0547e866-903d-4ca5-af6d-dafc738cdaf2",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controllers",
                     "action": "Kick",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -187,16 +209,11 @@
             ]
         },
         {
-            "name": "Console",
-            "bindingGroup": "Console",
+            "name": "Controllers",
+            "bindingGroup": "Controllers",
             "devices": [
                 {
-                    "devicePath": "<Joystick>",
-                    "isOptional": false,
-                    "isOR": false
-                },
-                {
-                    "devicePath": "<Keyboard>",
+                    "devicePath": "<XInputController>",
                     "isOptional": false,
                     "isOR": false
                 }

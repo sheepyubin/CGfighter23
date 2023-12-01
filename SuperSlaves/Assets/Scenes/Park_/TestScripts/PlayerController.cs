@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
         {
             if (pComboPriorty >= m_currentComboPriorty)
             {
-                Debug.Log(pComboPriorty > m_currentComboPriorty);
                 m_currentComboPriorty = pComboPriorty;
                 ResetTriggers();
                 m_controlManager.ResetCombo();
