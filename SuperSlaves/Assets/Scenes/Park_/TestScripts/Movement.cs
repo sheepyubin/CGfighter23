@@ -19,16 +19,11 @@ public class Movement : ScriptableObject
 
         for (int i = 0; i < m_moveKeyCodes.Count && i < pPlayerKeyCodes.Count; i++)
         {
-            if (pPlayerKeyCodes.Count <= i)
+            if (pPlayerKeyCodes.Count <= i || m_moveKeyCodes.Count <= i)
             {
-                Debug.LogError("pPlayerKeyCodes.Count is low");
                 break;
             }
-            else if (m_moveKeyCodes.Count <= i)
-            {
-                Debug.LogError("m_moveKeyCodes.Count is low");
-                break;
-            }
+
             if (pPlayerKeyCodes[i] == m_moveKeyCodes[i])
             {
                 comboIndex++;

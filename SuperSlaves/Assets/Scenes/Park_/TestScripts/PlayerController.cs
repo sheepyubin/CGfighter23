@@ -6,18 +6,18 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private Animator m_animator;
-    private ControlManager m_controlManager;
+    private IControlManager m_controlManager;
     private int m_currentComboPriorty = 0;
 
     private void Awake()
     {
         if (m_animator == null)
         {
-            m_animator = GetComponent<Animator>();
+            m_animator = this.GetComponent<Animator>();
         }
         if (m_controlManager == null)
         {
-            m_controlManager = FindObjectOfType<ControlManager>();
+            m_controlManager = this.GetComponent<IControlManager>();
         }
     }
 

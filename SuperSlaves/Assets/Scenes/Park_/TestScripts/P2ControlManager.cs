@@ -1,15 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using TMPro;
-using System;
-using Unity.VisualScripting;
-
-public class ControlManager : MonoBehaviour
+public class P2ControlManager : MonoBehaviour, IControlManager
 {
-    [SerializeField] private float m_comboResetTime = 0.5f;
+    [SerializeField] private float m_comboResetTime = 0.35f;
     [SerializeField] private List<Keys> m_pressedKeys;
     [SerializeField] private TextMeshProUGUI m_textForTest;
     [SerializeField] private String m_playerName;
@@ -25,10 +23,12 @@ public class ControlManager : MonoBehaviour
         {
             m_movementManager = FindObjectOfType<MovementManager>();
         }
-        if(m_playerController == null)
+        if (m_playerController == null)
         {
             m_playerController = this.GetComponent<PlayerController>();
         }
+
+        m_textForTest = GameObject.Find("BufferTest (1)").GetComponent<TextMeshProUGUI>();
     }
 
     private void Update()
@@ -36,49 +36,57 @@ public class ControlManager : MonoBehaviour
         PrintControls();
     }
 
-    private void OnMove(InputValue value)
+    public void AddKeys(Keys key)
     {
-        Debug.Log(this.gameObject.name);
-
-        Vector2 inputVec = value.Get<Vector2>();
-
-        //Left
-        if(inputVec.x < 0)
-        {
-            m_pressedKeys.Add(Keys.Left);
-        }
-        //Right
-        else if(inputVec.x > 0)
-        {
-            m_pressedKeys.Add(Keys.Right);
-        }
-        //Up
-        else if(inputVec.y > 0)
-        {
-            m_pressedKeys.Add(Keys.Up);
-        }
-        //Down
-        else if (inputVec.y < 0)
-        {
-            m_pressedKeys.Add(Keys.Down);
-        }
-
+        m_pressedKeys.Add(key);
         SetComboTimer();
     }
 
-    private void OnPunch()
-    {
-        m_pressedKeys.Add(Keys.Punch);
-        SetComboTimer();
-    }
+    //private void OnMoveP2(InputValue value)
+    //{
+    //    Debug.Log(this.gameObject.name);
 
-    private void OnKick()
-    {
-        m_pressedKeys.Add(Keys.Kick);
-        SetComboTimer();
-    }
+    //    Vector2 inputVec = value.Get<Vector2>();
 
-    private void SetComboTimer()
+    //    //Left
+    //    if (inputVec.x < 0)
+    //    {
+    //        m_pressedKeys.Add(Keys.Left);
+    //    }
+    //    //Right
+    //    else if (inputVec.x > 0)
+    //    {
+    //        m_pressedKeys.Add(Keys.Right);
+    //    }
+    //    //Up
+    //    else if (inputVec.y > 0)
+    //    {
+    //        m_pressedKeys.Add(Keys.Up);
+    //    }
+    //    //Down
+    //    else if (inputVec.y < 0)
+    //    {
+    //        m_pressedKeys.Add(Keys.Down);
+    //    }
+
+    //    SetComboTimer();
+    //}
+
+    //private void OnPunchP2()
+    //{
+    //    m_pressedKeys.Add(Keys.Punch);
+    //    SetComboTimer();
+    //}
+
+    //private void OnKickP2()
+    //{
+    //    m_pressedKeys.Add(Keys.Kick);
+    //    SetComboTimer();
+    //}
+
+    //private void OnGuard()
+
+    public void SetComboTimer()
     {
         if (!m_movementManager.CanMove(m_pressedKeys) && m_timer != null)
         {
@@ -93,7 +101,7 @@ public class ControlManager : MonoBehaviour
         this.m_pressedKeys.Clear();
     }
 
-    private IEnumerator ResetComboTimer()
+    public IEnumerator ResetComboTimer()
     {
         yield return new WaitForSeconds(m_comboResetTime);
 

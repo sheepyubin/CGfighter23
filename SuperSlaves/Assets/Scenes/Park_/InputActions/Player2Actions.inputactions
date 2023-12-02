@@ -2,11 +2,11 @@
     "name": "Player2Actions",
     "maps": [
         {
-            "name": "PlayerAction",
+            "name": "Player2Action",
             "id": "10e43cda-6659-43a5-aaf9-3f3e2e746271",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "MoveP2",
                     "type": "Value",
                     "id": "40426dee-10bb-4bcd-8906-686945561306",
                     "expectedControlType": "Vector2",
@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Punch",
+                    "name": "PunchP2",
                     "type": "Button",
                     "id": "6da86402-72a2-4e20-9d54-53d72dcfead5",
                     "expectedControlType": "Button",
@@ -24,9 +24,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Kick",
+                    "name": "KickP2",
                     "type": "Button",
                     "id": "3ffc1a5a-afd7-4936-81a8-d503a2337dbf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GuardP2",
+                    "type": "Button",
+                    "id": "ff007016-8bff-4209-a8ba-315707da8e3e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -41,7 +50,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveP2",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -52,7 +61,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Move",
+                    "action": "MoveP2",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -63,7 +72,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Move",
+                    "action": "MoveP2",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -74,7 +83,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Move",
+                    "action": "MoveP2",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -85,62 +94,62 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Move",
+                    "action": "MoveP2",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "2D Vector",
-                    "id": "c08b3645-fdf5-4ba9-a2d7-623ae584df5d",
+                    "id": "e3afd7f7-7d83-4777-95aa-1917f862753e",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveP2",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "up",
-                    "id": "57e45a83-ae1e-491a-b261-85e24ee288da",
-                    "path": "<Joystick>/stick/up",
+                    "id": "d7d12c78-4006-4c49-a3a2-baaa6987e4d4",
+                    "path": "<Gamepad>/rightStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Console",
-                    "action": "Move",
+                    "groups": "Controllers",
+                    "action": "MoveP2",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "b8e449d1-9db2-4b2b-8a8d-76bd4bd2a654",
-                    "path": "<Joystick>/stick/up",
+                    "id": "ba187de7-d30d-45ad-bec9-d2999c58361f",
+                    "path": "<Gamepad>/rightStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Console",
-                    "action": "Move",
+                    "groups": "Controllers",
+                    "action": "MoveP2",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "806d45da-1e40-466a-8b63-88774675dd3d",
-                    "path": "<Joystick>/stick/left",
+                    "id": "d0cedaea-bb1e-4eb8-a0d8-df40077a86b1",
+                    "path": "<Gamepad>/rightStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Console",
-                    "action": "Move",
+                    "groups": "Controllers",
+                    "action": "MoveP2",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "a306a967-3183-4313-8b7d-8565be6076a6",
-                    "path": "<Joystick>/stick/right",
+                    "id": "af56732a-4572-4720-8ef2-99e924c43880",
+                    "path": "<Gamepad>/rightStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Console",
-                    "action": "Move",
+                    "groups": "Controllers",
+                    "action": "MoveP2",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -151,7 +160,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Punch",
+                    "action": "PunchP2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7a88b6c9-10a2-4053-bb62-906b58244ca4",
+                    "path": "<XInputController>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controllers",
+                    "action": "PunchP2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -162,7 +182,40 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Kick",
+                    "action": "KickP2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6437d9ec-32aa-42d6-959d-671dab30cd45",
+                    "path": "<XInputController>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controllers",
+                    "action": "KickP2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ebcc881-c6d7-4084-9f6d-6acfebac7ab3",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "GuardP2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5d5761d7-082f-4659-a80d-726674aff7fb",
+                    "path": "<XInputController>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controllers",
+                    "action": "GuardP2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -187,16 +240,11 @@
             ]
         },
         {
-            "name": "Console",
-            "bindingGroup": "Console",
+            "name": "Controllers",
+            "bindingGroup": "Controllers",
             "devices": [
                 {
-                    "devicePath": "<Joystick>",
-                    "isOptional": false,
-                    "isOR": false
-                },
-                {
-                    "devicePath": "<Keyboard>",
+                    "devicePath": "<XInputController>",
                     "isOptional": false,
                     "isOR": false
                 }
