@@ -47,7 +47,7 @@ public class ControlManager : MonoBehaviour
 
     public void SetComboTimer()
     {
-        if (!m_movementManager.CanMove(m_pressedKeys) && m_timer != null)
+        if ((!m_movementManager.CanMove(m_pressedKeys) && m_timer != null) || m_timer != null)
         {
             StopCoroutine(m_timer);
         }

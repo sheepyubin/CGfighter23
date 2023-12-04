@@ -16,16 +16,19 @@ public class PlayerManager : MonoBehaviour
         if (inputVec.x < 0)
         {
             m_p1.AddKeys(Keys.Left);
+            m_p1.transform.Translate(Vector3.left * m_p1.MoveSpeed);
         }
         //Right
         else if (inputVec.x > 0)
         {
             m_p1.AddKeys(Keys.Right);
+            m_p1.transform.Translate(Vector3.right * m_p1.MoveSpeed);
         }
         //Up
         else if (inputVec.y > 0)
         {
             m_p1.AddKeys(Keys.Up);
+            //근데 점프 여기서해야할듯?
         }
         //Down
         else if (inputVec.y < 0)
@@ -57,11 +60,13 @@ public class PlayerManager : MonoBehaviour
         if (inputVec.x < 0)
         {
             m_p2.AddKeys(Keys.Left);
+            m_p2.transform.Translate(Vector3.left * m_p2.MoveSpeed);
         }
         //Right
         else if (inputVec.x > 0)
         {
             m_p2.AddKeys(Keys.Right);
+            m_p2.transform.Translate(Vector3.right * m_p2.MoveSpeed);
         }
         //Up
         else if (inputVec.y > 0)

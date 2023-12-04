@@ -740,12 +740,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7cb40f1b1f37a14c81b75c1b6cda5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_comboResetTime: 0.35
+  m_comboResetTime: 0.25
   m_pressedKeys: 
   m_textForTest: {fileID: 622710610}
   m_playerName: P1
   <JumpPower>k__BackingField: 15
-  <MoveSpeed>k__BackingField: 10
+  <MoveSpeed>k__BackingField: 1
 --- !u!50 &1079768315
 Rigidbody2D:
   serializedVersion: 4
@@ -766,7 +766,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1079768316
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1189,7 +1189,7 @@ Animator:
   m_GameObject: {fileID: 1713849380}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f03b1fddc087395428e8367d7ddc46ce, type: 2}
+  m_Controller: {fileID: 22100000, guid: d83a7748fce44ea428137c388e8fa749, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1294,8 +1294,8 @@ MonoBehaviour:
   m_pressedKeys: 
   m_textForTest: {fileID: 452980094}
   m_playerName: P2
-  <JumpPower>k__BackingField: 10
-  <MoveSpeed>k__BackingField: 10
+  <JumpPower>k__BackingField: 15
+  <MoveSpeed>k__BackingField: 1
 --- !u!50 &1713849388
 Rigidbody2D:
   serializedVersion: 4
@@ -1316,7 +1316,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1713849389
 BoxCollider2D:
   m_ObjectHideFlags: 0
