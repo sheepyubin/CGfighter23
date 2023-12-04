@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] private P1ControlManager m_p1;
-    [SerializeField] private P2ControlManager m_p2;
+    [SerializeField] private ControlManager m_p1;
+    [SerializeField] private ControlManager m_p2;
 
     private void OnMoveP1(InputValue value)
     {
@@ -44,6 +44,11 @@ public class PlayerManager : MonoBehaviour
         m_p1.AddKeys(Keys.Kick);
     }
 
+    private void OnGuardP1()
+    {
+        m_p1.AddKeys(Keys.Guard);
+    }
+
     private void OnMoveP2(InputValue value)
     {
         Vector2 inputVec = value.Get<Vector2>();
@@ -78,5 +83,10 @@ public class PlayerManager : MonoBehaviour
     private void OnKickP2()
     {
         m_p2.AddKeys(Keys.Kick);
+    }
+
+    private void OnGuardP2()
+    {
+        m_p2.AddKeys(Keys.Guard);
     }
 }

@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private Animator m_animator;
-    private IControlManager m_controlManager;
+    private ControlManager m_controlManager;
+    private Rigidbody2D m_rigid;
     private int m_currentComboPriorty = 0;
 
     private void Awake()
@@ -17,7 +18,11 @@ public class PlayerController : MonoBehaviour
         }
         if (m_controlManager == null)
         {
-            m_controlManager = this.GetComponent<IControlManager>();
+            m_controlManager = this.GetComponent<ControlManager>();
+        }
+        if(m_rigid == null)
+        {
+            m_rigid = this.GetComponent<Rigidbody2D>();
         }
     }
 
@@ -39,12 +44,32 @@ public class PlayerController : MonoBehaviour
             //Set Animation
             switch (pMove)
             {
+                case Moves.Jump:
+                    m_animator.SetTrigger("Jump");
+                    Jump();
+                    break;
+                case Moves.JumpingKick:
+                    m_animator.SetTrigger("JumpingKick");
+                    Jump();
+                    break;
+
                 case Moves.Punch:
                     m_animator.SetTrigger("Punch");
                     break;
                 case Moves.Kick:
                     m_animator.SetTrigger("Kick");
                     break;
+                case Moves.Guard:
+                    m_animator.SetTrigger("Guard");
+                    break;
+
+                case Moves.Bend:
+                    m_animator.SetTrigger("Bend");
+                    break;
+                case Moves.BendedPunch:
+                    m_animator.SetTrigger("BendedPunch");
+                    break;
+
                 case Moves.Skill:
                     m_animator.SetTrigger("Skill");
                     break;
@@ -54,6 +79,11 @@ public class PlayerController : MonoBehaviour
 
             m_currentComboPriorty = 0;
         }
+    }
+
+    private void Jump()
+    {
+        m_rigid.AddForce(Vector3.up * m_controlManager.JumpPower, ForceMode2D.Impulse);
     }
 
     private void ResetTriggers()

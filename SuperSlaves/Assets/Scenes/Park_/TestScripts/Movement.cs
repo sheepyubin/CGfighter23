@@ -44,8 +44,17 @@ public class Movement : ScriptableObject
 public enum Moves
 {
     None,
+
+    Jump,
+    JumpingKick,
+
     Punch,
     Kick,
+    Guard,
+
+    Bend,
+    BendedPunch,
+
     Skill,
 }
 
@@ -58,4 +67,5 @@ public enum Keys
     Right,
     Punch,
     Kick,
+    Guard,
 }

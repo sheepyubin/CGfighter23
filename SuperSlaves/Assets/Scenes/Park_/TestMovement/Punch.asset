@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_moveKeyCodes: 05000000
   <ComboPriorty>k__BackingField: 0
-  <MoveType>k__BackingField: 1
+  <MoveType>k__BackingField: 3

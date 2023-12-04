@@ -12,6 +12,9 @@ public class P1ControlManager : MonoBehaviour, IControlManager
     [SerializeField] private TextMeshProUGUI m_textForTest;
     [SerializeField] private String m_playerName;
 
+    [field : SerializeField] public float JumpPower { get; private set; }
+    [field : SerializeField] public float MoveSpeed { get; private set; }
+
     private MovementManager m_movementManager;
     private PlayerController m_playerController;
 
@@ -39,50 +42,6 @@ public class P1ControlManager : MonoBehaviour, IControlManager
         m_pressedKeys.Add(key);
         SetComboTimer();
     }
-
-    //private void OnMoveP1(InputValue value)
-    //{
-    //    Debug.Log(this.gameObject.name);
-
-    //    Vector2 inputVec = value.Get<Vector2>();
-
-    //    //Left
-    //    if (inputVec.x < 0)
-    //    {
-    //        m_pressedKeys.Add(Keys.Left);
-    //    }
-    //    //Right
-    //    else if (inputVec.x > 0)
-    //    {
-    //        m_pressedKeys.Add(Keys.Right);
-    //    }
-    //    //Up
-    //    else if (inputVec.y > 0)
-    //    {
-    //        m_pressedKeys.Add(Keys.Up);
-    //    }
-    //    //Down
-    //    else if (inputVec.y < 0)
-    //    {
-    //        m_pressedKeys.Add(Keys.Down);
-    //    }
-
-    //    SetComboTimer();
-    //}
-
-    //private void OnPunchP1()
-    //{
-    //    m_pressedKeys.Add(Keys.Punch);
-    //    SetComboTimer();
-    //}
-
-    //private void OnKickP1()
-    //{
-    //    m_pressedKeys.Add(Keys.Kick);
-    //    SetComboTimer();
-    //}
-
-    //private void OnGuard()
 
     public void SetComboTimer()
     {

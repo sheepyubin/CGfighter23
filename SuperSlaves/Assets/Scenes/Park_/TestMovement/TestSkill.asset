@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TestSkill
   m_EditorClassIdentifier: 
   m_moveKeyCodes: 01000000010000000200000004000000030000000400000005000000
-  <ComboPriorty>k__BackingField: 1
-  <MoveType>k__BackingField: 3
+  <ComboPriorty>k__BackingField: 10
+  <MoveType>k__BackingField: 8
