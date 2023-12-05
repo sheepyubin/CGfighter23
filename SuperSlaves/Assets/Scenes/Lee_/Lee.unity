@@ -153,27 +153,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drowGizmo: 1
-  playerBox1: {fileID: 3025956117141178010, guid: c51c7219764c3d443a62ce594249c341, type: 3}
-  playerBox2: {fileID: 3025956117141178010, guid: 0490e184ede8aee41aa129a17e661bf1, type: 3}
-  tempBox: {fileID: 6376527965966574912, guid: b31af48be44b0f34794d33706b7116e4, type: 3}
-  randomBox: {fileID: 3860684817539161064, guid: 89a729e895c45714284abfda02d4c5e8, type: 3}
-  question: {fileID: 3618399724767128606, guid: 848c4663a3f2ad64caaf099d659b7638, type: 3}
   character:
-  - {fileID: 3860684817539161064, guid: 9ddf875ff7bb6154796213cbf2ddb9ed, type: 3}
   - {fileID: 4606447096192136844, guid: 76dfc5d1bd64b0740afacc17c30990d1, type: 3}
-  - {fileID: 6391933231053257472, guid: f7cbd8a10ce4daa4081ccc29ab14f16c, type: 3}
-  - {fileID: 1426719268549717564, guid: a148965f9fe909141a1f7706b625ef89, type: 3}
-  characterPos:
-  - {x: -2.8, y: -2.1, z: 0}
-  - {x: -1.4, y: -2.1, z: 0}
-  - {x: 0, y: -1.6199999, z: 0}
-  - {x: 1.4, y: -2.1, z: 0}
-  - {x: 2.8, y: -2.1, z: 0}
-  - {x: -2.8, y: -3.5, z: 0}
-  - {x: -1.4, y: -3.5, z: 0}
-  - {x: 0, y: -3.62, z: 0}
-  - {x: 1.4, y: -3.5, z: 0}
-  - {x: 2.8, y: -3.5, z: 0}
+  - {fileID: 4606447096192136844, guid: 76dfc5d1bd64b0740afacc17c30990d1, type: 3}
+  - {fileID: 4606447096192136844, guid: 76dfc5d1bd64b0740afacc17c30990d1, type: 3}
+  - {fileID: 4606447096192136844, guid: 76dfc5d1bd64b0740afacc17c30990d1, type: 3}
+  - {fileID: 4606447096192136844, guid: 76dfc5d1bd64b0740afacc17c30990d1, type: 3}
+  - {fileID: 4606447096192136844, guid: 76dfc5d1bd64b0740afacc17c30990d1, type: 3}
+  - {fileID: 4606447096192136844, guid: 76dfc5d1bd64b0740afacc17c30990d1, type: 3}
+  - {fileID: 4606447096192136844, guid: 76dfc5d1bd64b0740afacc17c30990d1, type: 3}
+  - {fileID: 4606447096192136844, guid: 76dfc5d1bd64b0740afacc17c30990d1, type: 3}
+  - {fileID: 4606447096192136844, guid: 76dfc5d1bd64b0740afacc17c30990d1, type: 3}
+  playerBox1: {fileID: 459479600928429482, guid: 3d609ce1ca6da1c44bda08993688acde, type: 3}
+  playerBox2: {fileID: 2585894121906053156, guid: 2984df3610118fb4e8d502a1666348e3, type: 3}
+  aniBox: {fileID: 6376527965966574912, guid: b31af48be44b0f34794d33706b7116e4, type: 3}
+  randomBox: {fileID: 3025956117141178010, guid: c51c7219764c3d443a62ce594249c341, type: 3}
+  color1: {r: 1, g: 0.08176094, b: 0.08176094, a: 1}
+  color2: {r: 0, g: 0, b: 0, a: 1}
   selectPos: 2.8
   gapX: 1.4
   gapY: 0.7
