@@ -13,6 +13,7 @@ public class IngameHitBox : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var hitbox = collision.GetComponent<IngameHitBox>();
+
         if (hitbox != null && hitbox.Player != this.Player)
         {
             if(this.Type == HitBox.Attack)
@@ -35,7 +36,6 @@ public class IngameHitBox : MonoBehaviour
                     isDefense = true;
                 }
             }
-
             if (!isDefense)
             {
                 hits[0].Player.UpdateLife(this.Power);

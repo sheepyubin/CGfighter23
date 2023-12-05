@@ -25,9 +25,6 @@ public class IngameManager : MonoBehaviour
             scaleP1.x *= -1;
             m_player1.transform.localScale = scaleP1;
 
-            //var xPos2 = m_player2.GetComponent<SpriteRenderer>().flipX;
-            //m_player2.GetComponent<SpriteRenderer>().flipX = !xPos2;
-
             var scaleP2 = m_player2.transform.localScale;
             scaleP2.x *= -1;
             m_player2.transform.localScale = scaleP2;
