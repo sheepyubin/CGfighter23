@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     private ControlManager m_controlManager;
     private Rigidbody2D m_rigid;
     private int m_currentComboPriorty = 0;
+    private bool m_isOnGround = false;
+
+    public bool IsGuarding { get; private set; }
 
     private void Awake()
     {
@@ -24,6 +27,8 @@ public class PlayerController : MonoBehaviour
         {
             m_rigid = this.GetComponent<Rigidbody2D>();
         }
+
+        IsGuarding = false;
     }
 
     public void PlayerMove(Moves pMove, int pComboPriorty)
@@ -61,6 +66,7 @@ public class PlayerController : MonoBehaviour
                     break;
                 case Moves.Guard:
                     m_animator.SetTrigger("Guard");
+                    StartCoroutine(ResetGuard());
                     break;
 
                 case Moves.Bend:
@@ -81,9 +87,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Jump()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        m_rigid.AddForce(Vector3.up * m_controlManager.JumpPower, ForceMode2D.Impulse);
+        if(collision.gameObject.tag == "Ground")
+        {
+            m_isOnGround = true;
+        }
+    }
+
+    public void Jump()
+    {
+        if (m_isOnGround)
+        {
+            m_rigid.AddForce(Vector3.up * m_controlManager.JumpPower, ForceMode2D.Impulse);
+            m_isOnGround = false;
+        }
     }
 
     private void ResetTriggers()
@@ -92,5 +110,24 @@ public class PlayerController : MonoBehaviour
         {
             m_animator.ResetTrigger(parameter.name);
         }
+    }
+
+    private IEnumerator ResetGuard()
+    {
+        IsGuarding = true;
+        
+        while (true)
+        {
+            yield return null;
+            if(m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            {
+                break;
+            }
+        }
+
+        Debug.Log("Final Test Success");
+
+        IsGuarding = false;
+        yield break;
     }
 }

@@ -28,7 +28,7 @@ public class PlayerManager : MonoBehaviour
         else if (inputVec.y > 0)
         {
             m_p1.AddKeys(Keys.Up);
-            //근데 점프 여기서해야할듯?
+            m_p1.GetComponent<PlayerController>().Jump();
         }
         //Down
         else if (inputVec.y < 0)
@@ -72,6 +72,7 @@ public class PlayerManager : MonoBehaviour
         else if (inputVec.y > 0)
         {
             m_p2.AddKeys(Keys.Up);
+            m_p2.GetComponent<PlayerController>().Jump();
         }
         //Down
         else if (inputVec.y < 0)
