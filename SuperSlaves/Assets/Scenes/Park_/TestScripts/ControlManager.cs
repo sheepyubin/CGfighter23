@@ -9,16 +9,18 @@ using Unity.VisualScripting;
 
 public class ControlManager : MonoBehaviour
 {
-    [SerializeField] private float m_comboResetTime = 0.35f;
     [SerializeField] private List<Keys> m_pressedKeys;
     [SerializeField] private TextMeshProUGUI m_textForTest;
     [SerializeField] private String m_playerName;
 
+    [field : SerializeField] public float ComboResetTime { get; private set; }
     [field: SerializeField] public float JumpPower { get; private set; }
     [field: SerializeField] public float MoveSpeed { get; private set; }
 
     private MovementManager m_movementManager;
     private PlayerController m_playerController;
+
+    public bool IsTouched { get; private set; }
 
     private Coroutine m_timer;
 
@@ -32,6 +34,8 @@ public class ControlManager : MonoBehaviour
         {
             m_playerController = this.GetComponent<PlayerController>();
         }
+
+        IsTouched = false;
     }
 
     private void Update()
@@ -62,7 +66,7 @@ public class ControlManager : MonoBehaviour
 
     public IEnumerator ResetComboTimer()
     {
-        yield return new WaitForSeconds(m_comboResetTime);
+        yield return new WaitForSeconds(ComboResetTime);
 
         m_movementManager.PlayMove(m_pressedKeys, m_playerController);
         m_pressedKeys.Clear();
@@ -77,6 +81,22 @@ public class ControlManager : MonoBehaviour
         foreach (Keys keyCode in m_pressedKeys)
         {
             m_textForTest.text += $"{keyCode} ";
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.GetComponent<ControlManager>() != null)
+        {
+            IsTouched = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<ControlManager>() != null)
+        {
+            IsTouched = false;
         }
     }
 }

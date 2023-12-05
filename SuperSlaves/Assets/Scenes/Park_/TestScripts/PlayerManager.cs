@@ -8,6 +8,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private ControlManager m_p1;
     [SerializeField] private ControlManager m_p2;
 
+    [SerializeField] private IngameManager m_ingameManager;
+
     private void OnMoveP1(InputValue value)
     {
         Vector2 inputVec = value.Get<Vector2>();
@@ -16,13 +18,19 @@ public class PlayerManager : MonoBehaviour
         if (inputVec.x < 0)
         {
             m_p1.AddKeys(Keys.Left);
-            m_p1.transform.Translate(Vector3.left * m_p1.MoveSpeed);
+            if(!m_p1.IsTouched || m_ingameManager.Distance < m_p1.gameObject.transform.localScale.x / 2)
+            {
+                m_p1.transform.Translate(Vector3.left * m_p1.MoveSpeed);
+            }
         }
         //Right
         else if (inputVec.x > 0)
         {
             m_p1.AddKeys(Keys.Right);
-            m_p1.transform.Translate(Vector3.right * m_p1.MoveSpeed);
+            if(!m_p1.IsTouched || m_ingameManager.Distance > m_p1.gameObject.transform.localScale.x / 2)
+            {
+                m_p1.transform.Translate(Vector3.right * m_p1.MoveSpeed);
+            }
         }
         //Up
         else if (inputVec.y > 0)
@@ -60,13 +68,19 @@ public class PlayerManager : MonoBehaviour
         if (inputVec.x < 0)
         {
             m_p2.AddKeys(Keys.Left);
-            m_p2.transform.Translate(Vector3.left * m_p2.MoveSpeed);
+            if (!m_p2.IsTouched || m_ingameManager.Distance > m_p2.gameObject.transform.localScale.x / 2)
+            {
+                m_p2.transform.Translate(Vector3.left * m_p2.MoveSpeed);
+            }
         }
         //Right
         else if (inputVec.x > 0)
         {
             m_p2.AddKeys(Keys.Right);
-            m_p2.transform.Translate(Vector3.right * m_p2.MoveSpeed);
+            if (!m_p2.IsTouched || m_ingameManager.Distance < m_p2.gameObject.transform.localScale.x / 2)
+            {
+                m_p2.transform.Translate(Vector3.right * m_p2.MoveSpeed);
+            }
         }
         //Up
         else if (inputVec.y > 0)

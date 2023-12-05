@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour
     private ControlManager m_controlManager;
     private Rigidbody2D m_rigid;
     private int m_currentComboPriorty = 0;
-    private bool m_isOnGround = false;
+    private bool m_canJump = false;
+    public bool IsOnGround { get; private set; }
 
     private void Awake()
     {
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour
         {
             m_rigid = this.GetComponent<Rigidbody2D>();
         }
+
+        IsOnGround = false;
     }
 
     public void PlayerMove(Moves pMove, int pComboPriorty)
@@ -46,12 +49,18 @@ public class PlayerController : MonoBehaviour
             switch (pMove)
             {
                 case Moves.Jump:
-                    m_animator.SetTrigger("Jump");
-                    Jump();
+                    if (m_canJump)
+                    {
+                        m_animator.SetTrigger("Jump");
+                        Jump();
+                    }
                     break;
                 case Moves.JumpingKick:
-                    m_animator.SetTrigger("JumpingKick");
-                    Jump();
+                    if (m_canJump)
+                    {
+                        m_animator.SetTrigger("JumpingKick");
+                        Jump();
+                    }
                     break;
 
                 case Moves.Punch:
@@ -86,16 +95,24 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Ground")
         {
-            m_isOnGround = true;
+            IsOnGround = true;
+            StartCoroutine(BanJump());
+        }
+        if(collision.gameObject.tag == "Player")
+        {
+            if (!IsOnGround)
+            {
+                StartCoroutine(IgnorePlayer(collision.gameObject));
+            }
         }
     }
 
     public void Jump()
     {
-        if (m_isOnGround)
+        if (IsOnGround)
         {
             m_rigid.AddForce(Vector3.up * m_controlManager.JumpPower, ForceMode2D.Impulse);
-            m_isOnGround = false;
+            IsOnGround = false;
         }
     }
 
@@ -105,5 +122,23 @@ public class PlayerController : MonoBehaviour
         {
             m_animator.ResetTrigger(parameter.name);
         }
+    }
+
+    private IEnumerator BanJump()
+    {
+        m_canJump = false;
+        yield return new WaitForSeconds(m_controlManager.ComboResetTime);
+        m_canJump = true;
+        yield break;
+    }
+
+    private IEnumerator IgnorePlayer(GameObject pPlayer)
+    {
+        while (!IsOnGround)
+        {
+            pPlayer.layer = 3;
+            yield return null;
+        }
+        pPlayer.layer = 0;
     }
 }
