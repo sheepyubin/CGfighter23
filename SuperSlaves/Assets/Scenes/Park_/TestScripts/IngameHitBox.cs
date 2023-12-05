@@ -8,6 +8,8 @@ public class IngameHitBox : MonoBehaviour
     [field : SerializeField] public HitBox Type { get; private set; }
     [field : SerializeField] public float Power { get; private set; }   //방어의 경우 음수, 공격은 양수
 
+    private List<IngameHitBox> hits = new List<IngameHitBox>();
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var hitbox = collision.GetComponent<IngameHitBox>();
@@ -15,18 +17,32 @@ public class IngameHitBox : MonoBehaviour
         {
             if(this.Type == HitBox.Attack)
             {
-                if(hitbox.Type == HitBox.Attack)
-                {
-                    //그냥 맞은 걸로 침... 둘 다.
-                    hitbox.Player.UpdateLife(this.Power);
-                }
-                else
-                {
-                    //Power 서로 더해서 공격맞은 걸로 침
-                    hitbox.Player.UpdateLife(Mathf.Clamp(this.Power + hitbox.Power, 0, this.Power));
-                }
+                hits.Add(hitbox);
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if (hits.Count > 0)
+        {
+            bool isDefense = false;
+
+            foreach (var hit in hits)
+            {
+                if (hit.Type == HitBox.Defense)
+                {
+                    isDefense = true;
+                }
+            }
+
+            if (!isDefense)
+            {
+                hits[0].Player.UpdateLife(this.Power);
+            }
+        }
+
+        hits.Clear();
     }
 }
 

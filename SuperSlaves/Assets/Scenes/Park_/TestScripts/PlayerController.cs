@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour
     private int m_currentComboPriorty = 0;
     private bool m_isOnGround = false;
 
-    public bool IsGuarding { get; private set; }
-
     private void Awake()
     {
         if (m_animator == null)
@@ -27,8 +25,6 @@ public class PlayerController : MonoBehaviour
         {
             m_rigid = this.GetComponent<Rigidbody2D>();
         }
-
-        IsGuarding = false;
     }
 
     public void PlayerMove(Moves pMove, int pComboPriorty)
@@ -66,7 +62,6 @@ public class PlayerController : MonoBehaviour
                     break;
                 case Moves.Guard:
                     m_animator.SetTrigger("Guard");
-                    StartCoroutine(ResetGuard());
                     break;
 
                 case Moves.Bend:
@@ -110,24 +105,5 @@ public class PlayerController : MonoBehaviour
         {
             m_animator.ResetTrigger(parameter.name);
         }
-    }
-
-    private IEnumerator ResetGuard()
-    {
-        IsGuarding = true;
-        
-        while (true)
-        {
-            yield return null;
-            if(m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-            {
-                break;
-            }
-        }
-
-        Debug.Log("Final Test Success");
-
-        IsGuarding = false;
-        yield break;
     }
 }

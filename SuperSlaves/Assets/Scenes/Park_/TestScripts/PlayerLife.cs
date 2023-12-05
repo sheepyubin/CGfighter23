@@ -24,11 +24,6 @@ public class PlayerLife : MonoBehaviour
 
     public void UpdateLife(float value)
     {
-        if (m_playerController.IsGuarding)
-        {
-            return;
-        }
-
         m_currentLife -= value;
         PrintLife();
     }
