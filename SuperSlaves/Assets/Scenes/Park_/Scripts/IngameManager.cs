@@ -10,12 +10,13 @@ public class IngameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI m_IngameTimer;
 
-    [SerializeField] private GameObject m_hitPrefabs;
+    [SerializeField] private GameObject m_hitPrefab;
+    [SerializeField] private GameObject m_defensePrefab;
 
     private float m_maxPlayTime = 60f;
     private float m_ingameTime;
 
-    public float Distance;
+    public float Distance { get; private set; }
     public int Sign { get; private set; }
 
     private void Awake()
@@ -54,8 +55,14 @@ public class IngameManager : MonoBehaviour
 
     public void Hit(Vector3 pPos)
     {
-        var hit = Instantiate(m_hitPrefabs);
+        var hit = Instantiate(m_hitPrefab);
         hit.transform.position = pPos;
+    }
+
+    public void Defense(Vector3 pPos)
+    {
+        var def = Instantiate(m_defensePrefab);
+        def.transform.position = pPos;
     }
 
     public void GameOver()

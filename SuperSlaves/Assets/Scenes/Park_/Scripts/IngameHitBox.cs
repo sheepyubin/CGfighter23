@@ -20,8 +20,7 @@ public class IngameHitBox : MonoBehaviour
             if(this.Type == HitBox.Attack)
             {
                 hits.Add(hitbox);
-                //Debug.Log(this.GetComponentInChildren<Transform>().localPosition);
-                m_hitPos = this.GetComponentInChildren<Transform>().position;
+                m_hitPos = this.transform.GetChild(0).position;
             }
         }
     }
@@ -43,6 +42,11 @@ public class IngameHitBox : MonoBehaviour
             {
                 hits[0].Player.UpdateLife(this.Power);
                 FindObjectOfType<IngameManager>().Hit(m_hitPos);
+            }
+            else
+            {
+                FindObjectOfType<IngameManager>().Defense(m_hitPos);
+                hits[0].Player.JostledEffect(600);
             }
         }
 
