@@ -11,9 +11,11 @@ public class Movement : ScriptableObject
     [SerializeField] private List<Keys> m_moveKeyCodes;
 
     [field: SerializeField] public int ComboPriorty { get; private set; }
-    [field: SerializeField] public Moves MoveType { get; set; }
+    [field: SerializeField] public Moves MoveType { get; private set; }
 
-    public bool isMoveAvailable(List<Keys> pPlayerKeyCodes)
+    [field: SerializeField] public PlayerTypes PlayerType { get; private set; }
+
+    public bool IsMoveAvailable(List<Keys> pPlayerKeyCodes)
     {
         int comboIndex = 0;
 
@@ -38,6 +40,23 @@ public class Movement : ScriptableObject
             }
         }
         return false;
+    }
+
+    public int GetKeyCount()
+    {
+        return this.m_moveKeyCodes.Count;
+    }
+
+    public bool IsTryingCombo(List<Keys> pPlayerKeyCodes)
+    {
+        for(int i = 0; i < pPlayerKeyCodes.Count; i++)
+        {
+            if (pPlayerKeyCodes[i] != m_moveKeyCodes[i])
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
 
@@ -68,4 +87,34 @@ public enum Keys
     Punch,
     Kick,
     Guard,
+}
+
+public enum PlayerTypes
+{
+    None,
+
+    P01,
+    P02,
+    P03,
+    P04,
+    P05,
+    P06,
+    P07,
+    P08,
+    P09,
+    P10,
+    P11,
+    P12,
+    P13,
+    P14,
+    P15,
+    P16,
+    P17,
+    P18,
+    P19,
+    P20,
+    P21,
+    P22,
+    P23,
+    P51,
 }

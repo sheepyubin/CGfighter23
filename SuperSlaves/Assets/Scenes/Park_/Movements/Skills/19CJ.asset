@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: 19CJ
   m_EditorClassIdentifier: 
   m_moveKeyCodes: 0100000004000000030000000500000007000000
-  <ComboPriorty>k__BackingField: 0
-  <MoveType>k__BackingField: 0
+  <ComboPriorty>k__BackingField: 10
+  <MoveType>k__BackingField: 8
+  <PlayerType>k__BackingField: 19

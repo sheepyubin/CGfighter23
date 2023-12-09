@@ -15,3 +15,4 @@ MonoBehaviour:
   m_moveKeyCodes: 0200000005000000060000000500000006000000
   <ComboPriorty>k__BackingField: 10
   <MoveType>k__BackingField: 8
+  <PlayerType>k__BackingField: 3

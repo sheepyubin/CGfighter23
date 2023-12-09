@@ -24,7 +24,7 @@ public class PlayerManager : MonoBehaviour
             }
         }
         //Right
-        else if (inputVec.x > 0)
+        if (inputVec.x > 0)
         {
             m_p1.AddKeys(Keys.Right);
             if(!m_p1.IsTouched || m_ingameManager.Distance > m_p1.gameObject.transform.localScale.x / 2)
@@ -33,13 +33,13 @@ public class PlayerManager : MonoBehaviour
             }
         }
         //Up
-        else if (inputVec.y > 0)
+        if (inputVec.y > 0)
         {
             m_p1.AddKeys(Keys.Up);
             m_p1.GetComponent<PlayerController>().Jump();
         }
         //Down
-        else if (inputVec.y < 0)
+        if (inputVec.y < 0)
         {
             m_p1.AddKeys(Keys.Down);
         }
@@ -74,7 +74,7 @@ public class PlayerManager : MonoBehaviour
             }
         }
         //Right
-        else if (inputVec.x > 0)
+        if (inputVec.x > 0)
         {
             m_p2.AddKeys(Keys.Right);
             if (!m_p2.IsTouched || m_ingameManager.Distance < m_p2.gameObject.transform.localScale.x / 2)
@@ -83,13 +83,13 @@ public class PlayerManager : MonoBehaviour
             }
         }
         //Up
-        else if (inputVec.y > 0)
+        if (inputVec.y > 0)
         {
             m_p2.AddKeys(Keys.Up);
             m_p2.GetComponent<PlayerController>().Jump();
         }
         //Down
-        else if (inputVec.y < 0)
+        if (inputVec.y < 0)
         {
             m_p2.AddKeys(Keys.Down);
         }

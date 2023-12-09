@@ -38,7 +38,6 @@ public class PlayerController : MonoBehaviour
             {
                 m_currentComboPriorty = pComboPriorty;
                 ResetTriggers();
-                m_controlManager.ResetCombo();
             }
             else
             {
@@ -52,14 +51,14 @@ public class PlayerController : MonoBehaviour
                     if (m_canJump)
                     {
                         m_animator.SetTrigger("Jump");
-                        Jump();
+                        //Jump();
                     }
                     break;
                 case Moves.JumpingKick:
                     if (m_canJump)
                     {
                         m_animator.SetTrigger("JumpingKick");
-                        Jump();
+                        //Jump();
                     }
                     break;
 
@@ -81,7 +80,12 @@ public class PlayerController : MonoBehaviour
                     break;
 
                 case Moves.Skill:
-                    m_animator.SetTrigger("Skill");
+                    if (m_controlManager.CanSkill)
+                    {
+                        m_animator.SetTrigger("Skill");
+                        Debug.Log("Skill~!!!");
+                        m_controlManager.PlaySkill();
+                    }
                     break;
                 default:
                     break;
