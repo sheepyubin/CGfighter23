@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Park_/Park.unity
+    path: Assets/Scenes/Park_/Ingame.unity
     guid: dfb383bd6ed7fc94fac4b2cf269b56dd
   - enabled: 1
     path: Assets/Scenes/Lee_/Lee.unity
