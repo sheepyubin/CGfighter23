@@ -37,8 +37,8 @@ public class ReadyManager : MonoBehaviour
     //Å°ÀÔ·Â
     GameObject Pl_1;
     GameObject Pl_2;
-    int P1;
-    int P2;
+    public static int P1;
+    public static int P2;
     int P1_next;
     int P2_next;
 
@@ -407,7 +407,6 @@ public class ReadyManager : MonoBehaviour
         }
         
     }
-
     IEnumerator ShakeP1_V()
     {
         float shakeTime = 0.0f;
@@ -434,5 +433,4 @@ public class ReadyManager : MonoBehaviour
         }
         Pl_2.transform.position = new Vector3(Pl_2.transform.position.x, localPos);
     }
-
 }
