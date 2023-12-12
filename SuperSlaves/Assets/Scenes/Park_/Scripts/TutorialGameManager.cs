@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class IngameManager : MonoBehaviour, IGameManager
+public class TutorialGameManager : MonoBehaviour, IGameManager
 {
     [SerializeField] private GameObject m_player1;
     [SerializeField] private GameObject m_player2;
@@ -13,8 +13,8 @@ public class IngameManager : MonoBehaviour, IGameManager
     [SerializeField] private GameObject m_hitPrefab;
     [SerializeField] private GameObject m_defensePrefab;
 
-    private float m_maxPlayTime = 60f;
-    private float m_ingameTime;
+    //private float m_maxPlayTime = 60f;
+    //private float m_ingameTime;
 
     public float Distance { get; private set; }
     public int Sign { get; private set; }
@@ -26,14 +26,12 @@ public class IngameManager : MonoBehaviour, IGameManager
 
     private void Start()
     {
-        m_ingameTime = m_maxPlayTime;
+        UpdateTimer();
     }
 
     private void Update()
     {
         UpdateDistance();
-
-        UpdateTimer();
     }
 
     public void UpdateDistance()
@@ -54,14 +52,7 @@ public class IngameManager : MonoBehaviour, IGameManager
 
     public void UpdateTimer()
     {
-        m_ingameTime -= Time.deltaTime;
-        m_IngameTimer.text = ((int)m_ingameTime).ToString();
-
-        if (m_ingameTime <= 0)
-        {
-            //GameOver
-            GameOver();
-        }
+        m_IngameTimer.text = "XX";
     }
 
     public void Hit(Vector3 pPos)
@@ -74,29 +65,5 @@ public class IngameManager : MonoBehaviour, IGameManager
     {
         var def = Instantiate(m_defensePrefab);
         def.transform.position = pPos;
-    }
-
-    public void GameOver()
-    {
-        Time.timeScale = 0;
-
-        var p1Life = m_player1.GetComponent<PlayerLife>().LifeRate;
-        var p2Life = m_player2.GetComponent<PlayerLife>().LifeRate;
-
-        if(p1Life > p2Life)
-        {
-            //player1 won!
-            Debug.Log("Winner is... P1!");
-        }
-        else if(p1Life < p2Life)
-        {
-            //player2 won!
-            Debug.Log("Winner is... P2!");
-        }
-        else
-        {
-            //draw...!
-            Debug.Log("Draw!");
-        }
     }
 }

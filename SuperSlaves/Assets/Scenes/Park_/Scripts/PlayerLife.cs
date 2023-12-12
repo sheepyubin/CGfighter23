@@ -10,9 +10,11 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] private float CurrentLife;
     //[SerializeField] private TextMeshProUGUI m_lifeText;
     [SerializeField] private Slider m_lifeSlider;
+    [SerializeField] private GameObject m_gameManagerObj;
     [SerializeField] private bool m_isP1;
 
     private IngameManager m_ingameManager;
+    private IGameManager m_gameManager;
 
     public float LifeRate { get { return CurrentLife / MaxLife; } }
     private PlayerController m_playerController;
@@ -26,7 +28,11 @@ public class PlayerLife : MonoBehaviour
         {
             m_playerController = this.GetComponent<PlayerController>();
         }
-        if(m_ingameManager == null)
+        if(m_gameManagerObj != null && m_gameManager == null)
+        {
+            m_gameManager = m_gameManagerObj.GetComponent<IGameManager>();   
+        }
+        if(m_ingameManager == null && m_gameManagerObj == null)
         {
             m_ingameManager = FindObjectOfType<IngameManager>();
         }
@@ -43,7 +49,7 @@ public class PlayerLife : MonoBehaviour
         }
 
         CurrentLife -= value;
-        if (CurrentLife <= 0)
+        if (CurrentLife <= 0 && m_ingameManager != null)
         {
             m_ingameManager.GameOver();
         }
@@ -55,13 +61,16 @@ public class PlayerLife : MonoBehaviour
 
     public void JostledEffect(float pSpeed)
     {
+        if(m_gameManager == null)
+        {
+            return;
+        }
         var rigid = this.gameObject.GetComponent<Rigidbody2D>();
-        rigid.AddForce(new Vector2(m_ingameManager.Distance > 0 ? -1 : 1, 0) * (m_isP1? 1 : -1) * pSpeed);
+        rigid.AddForce(new Vector2(m_gameManager.Distance > 0 ? -1 : 1, 0) * (m_isP1? 1 : -1) * pSpeed);
     }
 
     private void PrintLife()
     {
-        //m_lifeText.text = $"{m_currentLife} / {m_maxLife}";
         m_lifeSlider.value = CurrentLife;
     }
 }

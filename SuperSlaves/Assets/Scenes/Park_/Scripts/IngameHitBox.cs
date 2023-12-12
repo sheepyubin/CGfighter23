@@ -8,8 +8,14 @@ public class IngameHitBox : MonoBehaviour
     [field : SerializeField] public HitBox Type { get; private set; }
     [field : SerializeField] public float Power { get; private set; }   //방어의 경우 음수, 공격은 양수
 
+    private IGameManager m_gameManager;
     private List<IngameHitBox> hits = new List<IngameHitBox>();
     private Vector3 m_hitPos;
+
+    private void Awake()
+    {
+        m_gameManager = GameObject.Find("IngameManager").GetComponent<IGameManager>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -41,11 +47,11 @@ public class IngameHitBox : MonoBehaviour
             if (!isDefense)
             {
                 hits[0].Player.UpdateLife(this.Power);
-                FindObjectOfType<IngameManager>().Hit(m_hitPos);
+                m_gameManager.Hit(m_hitPos);
             }
             else
             {
-                FindObjectOfType<IngameManager>().Defense(m_hitPos);
+                m_gameManager.Defense(m_hitPos);
                 hits[0].Player.JostledEffect(600);
             }
         }
